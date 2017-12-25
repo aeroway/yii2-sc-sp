@@ -1,0 +1,4 @@
+ReWriteEngine on
+ReWriteCond %{REQUEST_URL}% !^public
+RewriteRule ^backend(.*)$ backend/web/$1 [L,PT]
+RewriteRule ^(.*)$ frontend/web/$1 [L,QSA]

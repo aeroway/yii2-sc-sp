@@ -1,0 +1,68 @@
+<?php
+
+namespace common\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "category".
+ *
+ * @property integer $cat_id
+ * @property string $cat_name
+ * @property integer $parent_id
+ * @property string $cat_icon
+ * @property integer $status
+ * @property string $meta_keyword
+ * @property string $meta_description
+ * @property integer $created_at
+ * @property integer $updated_at
+ * @property integer $sid
+ * @property integer $is_adult
+ * @property string $photo
+ * @property string $full_slug
+ */
+class Category extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'category';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            //[['cat_id', 'created_at', 'updated_at', 'sid', 'is_adult', 'full_slug'], 'required'],
+            [['cat_id', 'parent_id', 'status', 'created_at', 'updated_at', 'sid', 'is_adult'], 'integer'],
+            [['cat_name', 'cat_icon', 'meta_keyword', 'meta_description', 'photo'], 'string', 'max' => 100],
+            [['full_slug'], 'string', 'max' => 255],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'cat_id' => 'Cat ID',
+            'cat_name' => 'Cat Name',
+            'parent_id' => 'Parent ID',
+            'cat_icon' => 'Cat Icon',
+            'status' => 'Status',
+            'meta_keyword' => 'Meta Keyword',
+            'meta_description' => 'Meta Description',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
+            'sid' => 'Sid',
+            'is_adult' => 'Is Adult',
+            'photo' => 'Photo',
+            'full_slug' => 'Full Slug',
+        ];
+    }
+}
